@@ -1,0 +1,77 @@
+##
+# Stellar Media Library — nginx site config
+# Place this at /etc/nginx/sites-available/default
+##
+
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+
+	# Music browser with fancyindex
+	location /Music {
+		fancyindex on;
+		fancyindex_exact_size off;
+		fancyindex_localtime on;
+		fancyindex_name_length 255;
+		fancyindex_header "/fancyindex/header.html";
+		fancyindex_footer "/fancyindex/footer.html";
+
+		types {
+			audio/mp4        m4a aac;
+			audio/mpeg       mp3;
+			audio/ogg        ogg opus;
+			audio/flac       flac;
+			audio/wav        wav;
+			audio/x-ms-wma   wma;
+			audio/aiff       aiff aif;
+		}
+	}
+
+	# Fancyindex static assets (header, footer, logo)
+	location /fancyindex/ {
+		alias /var/www/html/fancyindex/;
+	}
+
+	# Codec info endpoint — returns ffprobe metadata as JSON
+	location /info/ {
+		proxy_pass http://127.0.0.1:3000/info/;
+		proxy_buffering off;
+		proxy_read_timeout 15;
+		proxy_set_header Host $host;
+		add_header Access-Control-Allow-Origin *;
+	}
+
+	# Transcode proxy — streams incompatible formats as MP3 via FFmpeg
+	location /transcode/ {
+		proxy_pass http://127.0.0.1:3000/transcode/;
+		proxy_buffering off;
+		proxy_read_timeout 3600;
+		proxy_set_header Host $host;
+		add_header Access-Control-Allow-Origin *;
+	}
+
+	# M3U playlist — full library or per-folder
+	location /playlist.m3u {
+		proxy_pass http://127.0.0.1:3000/playlist.m3u;
+		proxy_buffering off;
+		proxy_read_timeout 60;
+		proxy_set_header Host $host;
+		add_header Access-Control-Allow-Origin *;
+	}
+
+	location /playlist/ {
+		proxy_pass http://127.0.0.1:3000/playlist/;
+		proxy_buffering off;
+		proxy_read_timeout 60;
+		proxy_set_header Host $host;
+		add_header Access-Control-Allow-Origin *;
+	}
+}

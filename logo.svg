@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="80" fill="#0f0f0f"/>
+  
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="#c778dd" stroke-width="6" opacity="0.3"/>
+  
+  <!-- Middle ring -->
+  <circle cx="256" cy="256" r="130" fill="none" stroke="#c778dd" stroke-width="4" opacity="0.5"/>
+  
+  <!-- Inner disc -->
+  <circle cx="256" cy="256" r="80" fill="#1a1a1a" stroke="#c778dd" stroke-width="3"/>
+  
+  <!-- Center hole -->
+  <circle cx="256" cy="256" r="18" fill="#0f0f0f" stroke="#c778dd" stroke-width="2"/>
+  
+  <!-- Star points on outer ring -->
+  <g fill="#c778dd">
+    <circle cx="256" cy="76" r="5"/>
+    <circle cx="256" cy="436" r="5"/>
+    <circle cx="76" cy="256" r="5"/>
+    <circle cx="436" cy="256" r="5"/>
+    <circle cx="130" cy="130" r="4"/>
+    <circle cx="382" cy="130" r="4"/>
+    <circle cx="130" cy="382" r="4"/>
+    <circle cx="382" cy="382" r="4"/>
+  </g>
+
+  <!-- Sound wave bars inside disc -->
+  <g fill="#c778dd">
+    <rect x="210" y="236" width="8" height="40" rx="4"/>
+    <rect x="226" y="224" width="8" height="64" rx="4"/>
+    <rect x="242" y="232" width="8" height="48" rx="4"/>
+    <rect x="258" y="218" width="8" height="76" rx="4"/>
+    <rect x="274" y="228" width="8" height="56" rx="4"/>
+    <rect x="290" y="238" width="8" height="36" rx="4"/>
+  </g>
+</svg>

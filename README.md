@@ -74,7 +74,7 @@ cp transcode/server.js /var/www/transcode/
 
 Edit `MUSIC_ROOT` and `BASE_URL` in `server.js` to match your setup:
 ```javascript
-const MUSIC_ROOT = '/var/www/html/Music/Music'; // path to your actual music files
+const MUSIC_ROOT = '/path/to/your/music'; // path to your actual music files
 const BASE_URL = 'https://your-domain.com';      // your public URL
 ```
 
@@ -100,8 +100,8 @@ curl -I https://your-domain.com/transcode/Artist/Album/track.m4a
 ### server.js
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `MUSIC_ROOT` | `/var/www/html/Music/Music` | Absolute path to music files |
-| `BASE_URL` | `https://media.wuskienavigator.qzz.io` | Public base URL for M3U/OG embeds |
+| `MUSIC_ROOT` | `/path/to/your/music` | Absolute path to music files |
+| `BASE_URL` | `https://your-domain.com` | Public base URL for M3U/OG embeds |
 | `PORT` | `3000` | Port for transcode server |
 | `BITRATE` | `320000` | Output bitrate for transcoded streams |
 

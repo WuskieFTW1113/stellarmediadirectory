@@ -1,0 +1,15 @@
+[Unit]
+Description=Stellar Media Transcode Server
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/node /var/www/transcode/server.js
+Restart=always
+RestartSec=5
+User=www-data
+WorkingDirectory=/var/www/transcode
+StandardOutput=append:/var/log/transcode.log
+StandardError=append:/var/log/transcode.log
+
+[Install]
+WantedBy=multi-user.target

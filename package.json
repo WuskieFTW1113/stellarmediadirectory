@@ -1,0 +1,10 @@
+{
+  "name": "stellar-media-transcode",
+  "version": "1.0.0",
+  "description": "On-the-fly FFmpeg transcoding server for Stellar Media Library",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {}
+}
